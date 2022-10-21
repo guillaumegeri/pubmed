@@ -1630,7 +1630,7 @@ Show the result in the \"*PubMed-entry*\" buffer."
 	  (save-selected-window
 	    (display-buffer pubmed-entry-buffer))))))))
 
-(defun pubmed-get-uid ()
+(defun pubmed--get-uid ()
   "Return the unique identifier of the current entry."
   (pubmed--guard)
   (let* ((node (ewoc-locate pubmed-ewoc))
@@ -1638,7 +1638,7 @@ Show the result in the \"*PubMed-entry*\" buffer."
          (uid (plist-get entry :uid)))
     uid))
 
-(defun pubmed-get-doi ()
+(defun pubmed--get-doi ()
   "Return the Digital Object Identifier (DOI) of the current entry."
   (let* ((node (ewoc-locate pubmed-ewoc))
          (entry (ewoc-data node))
@@ -1647,7 +1647,7 @@ Show the result in the \"*PubMed-entry*\" buffer."
          (doi (plist-get articleid :value)))
     doi))
 
-(defun pubmed-get-pmcid ()
+(defun pubmed--get-pmcid ()
   "Return the PubMed Central ID (PMC) of the current entry."
   (let* ((node (ewoc-locate pubmed-ewoc))
          (entry (ewoc-data node))
